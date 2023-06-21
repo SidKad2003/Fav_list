@@ -8,21 +8,30 @@ class RandomWords extends StatefulWidget {
 
 class RandomWordsState extends State<RandomWords> {
   final _randomWordPairs = <WordPair>[];
+  //  final List<WordPair> _airs = [
+  //   WordPair('1hello', 'world'),
+  //   WordPair('2flutter', 'app'),
+  //   WordPair('3programming', 'language')
+  // ];
   final _savedWordPairs = <WordPair>[];
 
   Widget _buildList() {
     return ListView.builder(
       padding: const EdgeInsets.all(16.0),
+      // itemCount: 3,
       itemBuilder: (context, item) {
         if (item.isOdd) return const Divider();
 
+        // final index = item;
         final index = item ~/ 2;
 
+        // if (index +10000 == _randomWordPairs.length) {
         if (index >= _randomWordPairs.length) {
           _randomWordPairs.addAll(generateWordPairs().take(10));
         }
 
         return _buildRow(_randomWordPairs[index]);
+        // return _buildRow(_airs[index]);
       },
     );
   }
